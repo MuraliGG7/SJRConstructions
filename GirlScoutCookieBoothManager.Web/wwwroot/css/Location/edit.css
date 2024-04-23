@@ -1,0 +1,102 @@
+﻿.formclass {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 25px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    margin-bottom: -50px;
+    margin-top: 60px;
+}
+
+.form-control {
+    padding-top: 10px;
+}
+
+.form-group{
+    margin-top: 10px;
+}
+
+#submitGenrateShifts {
+    display: block;
+    width: 60%;
+    padding: 10px 0px;
+    margin-top: 40px;
+    margin:auto;
+    font-size: 16px;
+    border: none;
+    border-radius: 25px;
+    background-color: #00b451;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#submitGenrateShifts:hover {
+    background-color: #d5f267;
+}
+
+select{
+    margin-top: 10px;
+}
+
+#backList, #save, .deleteBtn {
+    border-radius: 25px;
+    transition: background-color 0.3s;
+}
+
+#save {
+    background-color: #00b451;
+    border: none;
+}
+
+    #save:hover {
+        background-color: #d5f267;
+    }
+
+#createLocationSubmit {
+    display: block;
+    width: 60%;
+    padding: 10px 0px;
+    margin: auto;
+    margin-top: 40px;
+    font-size: 16px;
+    border: none;
+    border-radius: 25px;
+    background-color: #00b451;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#LotteryDeatils_wrapper {
+    overflow: hidden;
+}
+
+#LotteryDeatils_filter input {
+    margin-left: 20px; /* Adjust the value as needed */
+}
+
+#LotteryDeatils_length {
+    margin-bottom: 20px;
+}
+
+#LotteryDeatils_paginate {
+    text-align: center;
+    margin-top: 10px; /* Adjust the value as needed */
+}
+
+#EventLottery_wrapper {
+    overflow: hidden;
+}
+
+#EventLottery_filter input {
+    margin-left: 20px; /* Adjust the value as needed */
+}
+
+#EventLottery_length {
+    margin-bottom: 20px;
+}
+
+#EventLottery_paginate {
+    text-align: center;
+    margin-top: 10px; /* Adjust the value as needed */
+}

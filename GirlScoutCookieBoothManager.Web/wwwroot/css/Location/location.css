@@ -1,0 +1,81 @@
+﻿.formclass {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 25px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    margin-bottom: -50px;
+    margin-top: 30px;
+}
+
+
+#createLocationSubmit {
+    display: block;
+    width: 60%;
+    padding: 10px 0px;
+    margin: auto;
+    margin-top: 40px;
+    font-size: 16px;
+    border: none;
+    border-radius: 25px;
+    background-color: #00b451;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#createLocationSubmit:hover {
+    background-color: #d5f267;
+}
+
+.form-control {
+    padding-top: 10px;
+}
+
+#addLocation {
+    border: none;
+    border-radius: 25px;
+    background-color: #00b451;
+}
+
+    #addLocation:hover {
+        background-color: #d5f267;
+    }
+
+#backList, #editbtn {
+    border: none;
+    border-radius: 25px;
+}
+
+#LocationList_wrapper{
+    overflow: hidden;
+}
+
+#LocationList_filter input {
+    margin-left: 20px; /* Adjust the value as needed */
+}
+
+#LocationList_length {
+    margin-bottom: 20px;
+}
+
+#LocationList_paginate {
+    text-align: center;
+    margin-top: 10px; /* Adjust the value as needed */
+}
+
+#eventDetails_wrapper {
+    overflow: hidden;
+}
+
+#eventDetails_filter input {
+    margin-left: 20px; /* Adjust the value as needed */
+}
+
+#eventDetails_length {
+    margin-bottom: 20px;
+}
+
+#eventDetails_paginate {
+    text-align: center;
+    margin-top: 10px; /* Adjust the value as needed */
+}

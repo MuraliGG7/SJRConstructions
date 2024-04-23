@@ -1,0 +1,35 @@
+﻿<div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+                @*<button type="button" class="close btn-danger" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>*@
+            </div>
+            <div class="modal-body">
+                <div id="cfrsavemessage" style="display:none">Are you sure you want to submit?</div>
+                <div id="cfrresetmessage" style="display:none">Are you sure you want to reset the changes?</div>
+                <div id="cfrdeletemessage" style="display:none">Are you sure you want to delete the changes?</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" id="closebtn" data-dismiss="modal"><i class="fa-solid fa-xmark me-1"></i> Close</button>
+                <button type="button" style="display:none" class="btn btn-primary" id="saveChangesBtn"><i class="fa-solid fa-floppy-disk me-1"></i> Save</button>
+                <button type="button" style="display:none" class="btn btn-primary" id="resetBtn"><i class="fa-solid fa-arrow-rotate-left me-1"></i> Reset</button>
+                <button type="button" style="display:none" class="btn btn-primary" id="crfdeleteBtn"><i class="fa-solid fa-arrow-rotate-left me-1"></i> Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+<button id="showCrfMessageModal" style="display: none;" data-toggle="modal" data-target="#confirmationModal"></button>
+<script>
+        // Add this script to set focus on the close button when the modal is shown
+    $('#confirmationModal').on('shown.bs.modal', function () {
+            $('#closebtn').focus();
+        });
+    </script>
+<style>
+    #saveChangesBtn, #resetBtn, #crfdeleteBtn, #closebtn{
+        border-radius: 25px;
+    }
+</style>

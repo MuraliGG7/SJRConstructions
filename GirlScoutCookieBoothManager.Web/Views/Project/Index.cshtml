@@ -1,0 +1,72 @@
+﻿@model IEnumerable<ProjectDetailsVM>
+@{
+    ViewData["Title"] = "Projects";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+<link href="~/css/Location/location.css" rel="stylesheet" />
+<form>
+    <h3 align="center">
+        Projects
+        <div class="float-end">
+            <a class="btn btn-primary" title="Add Project" id="addProject" asp-action="Create">
+                <i class="fa fa-plus"></i> Add
+            </a>
+        </div>
+    </h3>
+    <div class="container-fluid" style="margin-top:20px;">
+        <div class="row">
+            <div class="col-md-12">
+                <table id="ProjectList" class="table table-bordered table-striped table-sortable text-wrap">
+                    <thead class="thead-dark sortable">
+                        <tr>
+                            <th class="text-center">@Html.DisplayNameFor(model => model.ProjectName)</th>
+                            <th class="text-center">Address</th>
+                            <th class="text-center">@Html.DisplayNameFor(model => model.City)</th>
+                            <th class="text-center">@Html.DisplayNameFor(model => model.State)</th>
+                            <th class="text-center">@Html.DisplayNameFor(model => model.OwnerName)</th>
+                            <th class="text-center">@Html.DisplayNameFor(model => model.OwnerContact)</th>
+                            <th class="text-center">@Html.DisplayNameFor(model => model.Status)</th>
+                            <th class="text-center col-2 no-sort">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="text-center">@Html.DisplayFor(model => item.ProjectName)</td>
+                                <td class="text-center text-break">@Html.DisplayFor(model => item.Address1) &nbsp; @Html.DisplayFor(model => item.Address2)</td>
+                                <td class="text-center">@Html.DisplayFor(model => item.City)</td>
+                                <td class="text-center">@Html.DisplayFor(model => item.State)</td>
+                                <td class="text-center">@Html.DisplayFor(model => item.OwnerName)</td>
+                                <td class="text-center">@Html.DisplayFor(model => item.OwnerContact)</td>
+                                <td class="text-center">@Html.DisplayFor(model => item.StatusId)</td>
+                                <td class="text-center">
+                                    <a class="btn btn-secondary" id="editbtn" asp-action="Edit" asp-route-id="@item.ProjectId">
+                                        <i class="fas fa-edit me-1" style="color: white;"></i> Edit
+                                    </a>                                    
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</form>
+<script>
+    $(document).ready(function () {        
+        if ($.fn.DataTable.isDataTable('#ProjectList')) {
+            $('#ProjectList').DataTable().destroy();
+        }
+        $('#ProjectList').DataTable({
+            "columnDefs": [
+                { "targets": ['no-sort'], "orderable": false }
+            ],
+            "language": {
+                "search": "Filter:",
+            },
+            "pageLength": 50
+        });
+
+    });
+</script>

@@ -1,0 +1,61 @@
+﻿@model GirlScoutCookieBoothManager.Web.ViewModels.UserDetailsVM
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Register";
+}
+
+<link href="~/css/user/user.css" rel="stylesheet" />
+<link href="~/css/site.css" rel="stylesheet" />
+
+<form asp-controller="User" asp-action="Register" method="post">
+    <h4 align="center" style="font-size: 1.7rem;font-weight: 500;">
+        Registration
+    </h4>
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <label for="UserName">User Name</label>
+    <input asp-for="UserName" class="form-control mb-2" placeholder="Troop Name" required>
+    <span asp-validation-for="UserName" class="text-danger"></span>
+    <br />
+    <label for="Contact">Contact</label>
+    <input asp-for="Contact" class="form-control mb-2" placeholder="Contact" required>
+    <span asp-validation-for="Contact" class="text-danger"></span>
+    <br />
+    <label for="Email">Email</label>
+    <input asp-for="Email" class="form-control mb-2" placeholder="Email" autocomplete="username" required readonly>
+    <span asp-validation-for="Email" class="text-danger"></span>
+    <br/>
+    <label for="Password">Password</label>
+    <input asp-for="Password" class="form-control mb-2" placeholder="Password" autocomplete="new-password" required>
+    <span toggle="#Password" class="eye toggle-password">
+        <i class="fa fa-eye"></i>
+        <i style="display:none" class="fa fa-eye-slash"></i>
+    </span>
+    <span asp-validation-for="Password" class="text-danger"></span>
+    <br />
+    <label for="ConfirmPassword">Confirm Password</label>
+    <input asp-for="ConfirmPassword" class="form-control mb-2" placeholder="Confirm Password" autocomplete="new-password" required>  
+    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+    
+    <button id="registerSubmit" type="submit" class="btn mt-2">Register</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+<script>
+    $(document).ready(function () {
+        $(".toggle-password").click(function () {
+            $(this).toggleClass("active");
+            var input = $($(this).attr("toggle"));
+            if (input.attr("type") == "password") {
+                input.attr("type", "text");
+                $(this).find('i.fa-eye').hide();
+                $(this).find('i.fa-eye-slash').show();
+            } else {
+                input.attr("type", "password");
+                $(this).find('i.fa-eye').show();
+                $(this).find('i.fa-eye-slash').hide();
+            }
+        });       
+    });
+</script>

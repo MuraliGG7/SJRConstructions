@@ -1,0 +1,89 @@
+﻿.formclass {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 25px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    /*margin-top: -40px;
+    margin-bottom: -70px;*/
+}
+
+.text-danger {
+    color: #dc3545;
+}
+.datepicker {
+    background-color: #ffffff; /* White background */
+    border: 1px solid #28a745; /* Green border */
+}
+
+.datepicker table th, .datepicker table td {
+    border-color: #28a745; /* Green border for table headers and cells */
+    width: 40px;
+    height: 25px;
+}
+
+.datepicker table thead th {
+    background-color: #28a745; /* Green background for table header */
+    color: #ffffff; /* White text for table header */
+}
+
+.datepicker table thead th.disabled, .datepicker table thead th:disabled, .datepicker table thead th.disabled:hover, .datepicker table thead th:disabled:hover {
+    background-color: #f8f9fa; /* Light gray background for disabled table header */
+    color: #6c757d; /* Dark gray text for disabled table header */
+}
+
+#eventSubmit {
+    display: block;
+    width: 60%;
+    padding: 10px 20px;
+    margin-top: 25px;
+    margin: auto;
+    font-size: 16px;
+    border: none;
+    border-radius: 25px;
+    background-color: #00b451;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+    #eventSubmit:hover {
+        background-color: #d5f267;
+    }
+
+#btn_shift, #btn_archive, #btn_lottery {
+    display: block;
+    width: 60%;
+    margin-top: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 25px;
+    background-color: #00b451;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#submitShift, #btn_back {
+    display: block;
+    width: 60%;
+    padding: 10px 20px;
+    margin-top: 25px;
+    margin: auto;
+    font-size: 16px;
+    border: none;
+    border-radius: 25px;
+    background-color: #00b451;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.custom-form-group {
+    width: 100%; /* Set a fixed width for the form groups */
+    overflow-y: auto; /* Enable vertical scroll when content exceeds height */
+    margin-bottom: 5px;
+}
+
+    .custom-form-group select {
+        height: 20px !important; /* !important is used to ensure the style takes precedence */
+    }

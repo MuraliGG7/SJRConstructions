@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Error";
+}
+
+<div class="error-container">
+    <h4><i class="fa-solid fa-triangle-exclamation fa-shake fa-2xl mr-3" style="color: red"></i> Sorry, something went wrong</h4>
+    <p class="mt-5">An error occurred while processing your request. Please try again later.</p>
+    @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+    {
+        <p>Error Details: @ViewBag.ErrorMessage</p>
+    }
+    <a href="/"><i class="fa-solid fa-house-chimney fa-bounce fa-lg"></i> Back to Home</a>
+</div>

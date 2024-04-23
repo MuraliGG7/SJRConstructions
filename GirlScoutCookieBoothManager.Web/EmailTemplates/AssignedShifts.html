@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shift Assignment Notification</title>
+    <style>
+        /* Define your styles here */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            color: #555;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 3px;
+        }
+
+            .btn:hover {
+                background-color: #0056b3;
+            }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <h1>Shifts Assigned!</h1>
+        <p>Hello Troop Coordinator,</p>
+        <p>Your shifts have been successfully assigned. Please review the assigned shifts for the upcoming event.</p>
+        <p>Click the button below to view your assigned shifts:</p>
+        <p><a href="{{assignedShiftsLink}}" class="btn">View Assigned Shifts</a></p>
+        <p>If you have any questions or concerns, please contact us.</p>
+        <p>Thank you!</p>
+    </div>
+</body>
+</html>
