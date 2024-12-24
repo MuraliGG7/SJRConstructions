@@ -29,13 +29,7 @@ jobs:
     - name: Azure login with Service Principal
       uses: azure/login@v1
       with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-    - name: Build and Push to ACR
-      run: |
-        az acr login --name ${{ env.CONTAINER_REGISTRY_NAME }}
-        docker build -t ${{ env.CONTAINER_REGISTRY_LOGIN_SERVER }}/${{ env.CONTAINER_APP_NAME }}:${{ github.sha }} .
-        docker push ${{ env.CONTAINER_REGISTRY_LOGIN_SERVER }}/${{ env.CONTAINER_APP_NAME }}:${{ github.sha }}
-
+        creds: ${{ secrets.AZURE_CREDENTIALS }}    
     - name: Deploy to Azure Container App
       uses: azure/container-apps-deploy-action@v1
       with:
