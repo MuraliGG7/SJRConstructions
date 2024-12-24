@@ -1,28 +1,22 @@
-# This workflow will build a .NET project
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+stages:
+  - build
+  - deploy
 
-name: .NET
+variables:
+  AZURE_WEBAPP_NAME: "CmvConstructions" # Replace with your Azure App Service name
+  AZURE_APP_SERVICE: "ASP-CMVConstrutions-ade0" # Optional, depends on your setup
+  AZURE_RESOURCE_GROUP: "CMVConstrutions"
+  AZURE_REGION: "West US"
 
-on:
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
+build:
+  stage: build
+  script:
+    - dotnet restore
+    - dotnet publish -c Release -o publish
 
-jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v3
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: 6.0.x
-    - name: Restore dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+deploy:
+  stage: deploy
+  script:
+    - |
+      az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET --tenant $AZURE_TENANT_ID
+      az webapp deploy --resource-group $AZURE_RESOURCE_GROUP --name $AZURE_WEBAPP_NAME --src-path publish
