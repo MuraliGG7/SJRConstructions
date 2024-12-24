@@ -22,7 +22,9 @@ jobs:
     - name: Azure login
       uses: azure/login@v1
       with:
-        creds: ${{ secrets.managedEnv20241224151814_SPN }}
+        client-id: ${{ secrets.AZURE_CLIENT_ID }}       # Service Principal's Application ID
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}       # Azure Directory ID
+        secret: ${{ secrets.AZURE_CLIENT_SECRET }}      # Service Principal's Secret
     - name: Container App deploy
       uses: azure/container-apps-deploy-action@v1
       with:
