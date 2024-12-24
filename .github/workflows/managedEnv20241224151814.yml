@@ -1,11 +1,8 @@
-permissions:
-  id-token: write  # Grant write access to id-token
-  contents: read  # To checkout the repository
-  actions: read   # Required by GitHub Actions
 on:
   push:
     branches:
-    - WorkingBranch
+      - WorkingBranch
+
 env:
   DOTNET_CORE_VERSION: 7.0.x
   CONTAINER_APP_NAME: sjrconstructions.web-container-app
@@ -13,24 +10,37 @@ env:
   RESOURCE_GROUP: CMVConstrutions
   CONTAINER_REGISTRY_NAME: registry20241224152107
   CONTAINER_REGISTRY_LOGIN_SERVER: registry20241224152107.azurecr.io
+
 jobs:
   BuildAndDeployContainerApp:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write  # Granting ID token permissions
+
     steps:
     - name: Checkout source code
       uses: actions/checkout@v4
+
     - name: Setup .NET SDK
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
-    - name: Azure login
+
+    - name: Azure login with Service Principal
       uses: azure/login@v1
       with:
         client-id: ${{ secrets.AZURE_CLIENT_ID }}       # Service Principal's Application ID
         tenant-id: ${{ secrets.AZURE_TENANT_ID }}       # Azure Directory ID
         secret: ${{ secrets.AZURE_CLIENT_SECRET }}      # Service Principal's Secret
-        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }} 
-    - name: Container App deploy
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}  # Subscription ID (ensure it's added to secrets)
+
+    - name: Build and Push to ACR
+      run: |
+        az acr login --name ${{ env.CONTAINER_REGISTRY_NAME }}
+        docker build -t ${{ env.CONTAINER_REGISTRY_LOGIN_SERVER }}/${{ env.CONTAINER_APP_NAME }}:${{ github.sha }} .
+        docker push ${{ env.CONTAINER_REGISTRY_LOGIN_SERVER }}/${{ env.CONTAINER_APP_NAME }}:${{ github.sha }}
+
+    - name: Deploy to Azure Container App
       uses: azure/container-apps-deploy-action@v1
       with:
         appSourcePath: ${{ github.workspace }}
