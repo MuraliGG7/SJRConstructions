@@ -1,0 +1,43 @@
+on:
+  push:
+    branches:
+      - WorkingBranch
+
+env:
+  DOTNET_CORE_VERSION: 7.0.x
+  CONTAINER_APP_NAME: sjr-web-container-app
+  CONTAINER_APP_ENVIRONMENT_NAME: managedEnv20241224151814
+  RESOURCE_GROUP: CMVConstrutions
+  CONTAINER_REGISTRY_NAME: registry20241224152107
+  CONTAINER_REGISTRY_LOGIN_SERVER: registry20241224152107.azurecr.io
+
+jobs:
+  BuildAndDeployContainerApp:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write  # Granting ID token permissions
+
+    steps:
+    - name: Checkout source code
+      uses: actions/checkout@v4
+
+    - name: Setup .NET SDK
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
+
+    - name: Azure login with Service Principal
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}    
+    - name: Deploy to Azure Container App
+      uses: azure/container-apps-deploy-action@v1
+      with:
+        appSourcePath: ${{ github.workspace }}
+        acrName: ${{ env.CONTAINER_REGISTRY_NAME }}
+        acrUsername: ${{ secrets.registry20241224152107_USERNAME_2C94 }}
+        acrPassword: ${{ secrets.registry20241224152107_PASSWORD_2C94 }}
+        imageToBuild: ${{ env.CONTAINER_REGISTRY_LOGIN_SERVER }}/${{ env.CONTAINER_APP_NAME }}:${{ github.sha }}
+        containerAppName: ${{ env.CONTAINER_APP_NAME }}
+        containerAppEnvironment: ${{ env.CONTAINER_APP_ENVIRONMENT_NAME }}
+        resourceGroup: ${{ env.RESOURCE_GROUP }}
