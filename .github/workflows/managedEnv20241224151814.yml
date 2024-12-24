@@ -5,7 +5,7 @@ on:
 
 env:
   DOTNET_CORE_VERSION: 7.0.x
-  CONTAINER_APP_NAME: sjrconstructions.web-container-app
+  CONTAINER_APP_NAME: sjr.web-container-app
   CONTAINER_APP_ENVIRONMENT_NAME: managedEnv20241224151814
   RESOURCE_GROUP: CMVConstrutions
   CONTAINER_REGISTRY_NAME: registry20241224152107
